@@ -1,0 +1,25 @@
+{
+  "name": "collection-app",
+  "version": "1.0.0",
+  "description": "Application used for maintaining collections",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tr4vi5/collection-app.git"
+  },
+  "author": "Travis Dunn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tr4vi5/collection-app/issues"
+  },
+  "homepage": "https://github.com/Tr4vi5/collection-app#readme",
+  "dependencies": {
+    "angular": "^1.7.3",
+    "express": "^4.16.3",
+    "pg": "^7.4.3"
+  }
+}

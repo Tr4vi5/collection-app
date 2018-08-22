@@ -1,1 +1,1 @@
-# collection-app
+# Collection Application
