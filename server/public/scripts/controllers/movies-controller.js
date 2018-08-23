@@ -2,6 +2,20 @@ myApp.controller('MoviesController',['$http', function($http){
     console.log('In Movies Controller');
     const self = this;
 
+
+    self.getGenres = function(){
+        $http({
+            method: 'GET',
+            url: '/movie-genres'
+        }).then(function(response){
+            console.log(response.data);
+            self.genres = response.data;
+        }).catch(function(error){
+            console.log('Error in movies-controller genre GET request:', error);
+            alert('Could not get genres');
+        });
+    };
+
     self.addMovie = function(movie){
         self.movieToAdd = movie;
         console.log('About to add', movie);  
@@ -17,4 +31,5 @@ myApp.controller('MoviesController',['$http', function($http){
         });
     };
 
+    self.getGenres();
 }]);
