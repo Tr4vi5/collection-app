@@ -2,18 +2,31 @@ myApp.controller('MoviesController',['$http', function($http){
     console.log('In Movies Controller');
     const self = this;
 
+    self.getAllMovies = function(){
+        $http({
+            method: 'GET',
+            url: '/movies'
+        }).then(function(response){
+            console.log('Back from server with:', response.data);
+            self.allMovies = response.data; 
+        }).catch(function(error){
+            console.log('Error GETting all movies from server:', error);
+            alert('Sorry, couldn\'t find any movies in your collection!');
+        });
+    };// end getAllMovies function
+
     self.getGenres = function(){
         $http({
             method: 'GET',
             url: '/movie-genres'
         }).then(function(response){
-            console.log(response.data);
+            console.log('Back from server with:', response.data);
             self.genres = response.data;
         }).catch(function(error){
             console.log('Error in movies-controller genre GET request:', error);
             alert('Could not get genres');
         });
-    };
+    };// end getGenres function
 
     self.addMovie = function(movie){
         self.movieToAdd = movie;
@@ -25,10 +38,12 @@ myApp.controller('MoviesController',['$http', function($http){
         }).then(function(response){
             console.log('POSTing to server:', response.data);
             self.movieIn = {};
+            self.getAllMovies();
         }).catch(function(error){
             console.log('Error in POST to server', error);
         });
-    };
+    };// end addMovie function
 
     self.getGenres();
+    self.getAllMovies();
 }]);

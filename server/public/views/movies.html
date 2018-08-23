@@ -10,3 +10,21 @@
     <input id="releaseDate" type="date" ng-model="mc.movieIn.dateIn" required>
     <input type="submit" value="Add Movie">
 </form>
+<table style="border: 1px solid black">
+    <thead>
+        <tr style="border: 1px solid black">
+            <th>Title</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="movie in mc.allMovies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.description}}</td>
+            <td>{{movie.genre}}</td>
+            <td>{{movie.release_date}}</td>
+        </tr>
+    </tbody>
+</table>
