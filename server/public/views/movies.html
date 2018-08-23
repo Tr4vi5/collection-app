@@ -1,14 +1,12 @@
 <h1>Movies</h1>
-<form ng-submit="mc.addMovie(movieIn)">
-    <input type="text" placeholder="Title" ng-model="movieIn.titleIn" required>
-    <input type="text" placeholder="Description" ng-model="movieIn.descriptionIn" required>
-    <select ng-model="movieIn.movieGenreIn" required>
+<form ng-submit="mc.addMovie(mc.movieIn)">
+    <input type="text" placeholder="Title" ng-model="mc.movieIn.titleIn" required>
+    <input type="text" placeholder="Description" ng-model="mc.movieIn.descriptionIn" required>
+    <select ng-model="mc.movieIn.movieGenreIn" required>
         <option value="" disabled selected>Choose Genre</option>
-        <!-- /// Switch options to ng-repeat with GET request -->
-        <option value="1">Action</option>
-        <option value="2">Adventure</option>
+        <option ng-repeat="genre in mc.genres" value="{{genre.id}}">{{genre.genre}}</option>
     </select>
     <label for="releaseDate">Release Date:</label>
-    <input id="releaseDate" type="date" ng-model="movieIn.dateIn" required>
+    <input id="releaseDate" type="date" ng-model="mc.movieIn.dateIn" required>
     <input type="submit" value="Add Movie">
 </form>
