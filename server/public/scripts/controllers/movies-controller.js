@@ -44,6 +44,22 @@ myApp.controller('MoviesController',['$http', function($http){
         });
     };// end addMovie function
 
+    self.reMovie = function(movie){
+        console.log('in reMovie', movie.id);
+        let success;
+        $http({
+            method: 'DELETE',
+            url: '/movies/delete/' + movie.id
+        }).then(function(response){
+            console.log('Success in reMovie!', response.data);
+            self.getAllMovies()///.then(function(){});
+            alert(movie.title + ' removed!');
+        }).catch(function(error){
+            console.log('Problem in reMovie', error);
+            alert('Problem removing ', movie.title);
+        });
+    };// end reMovie function
+
     self.getGenres();
     self.getAllMovies();
 }]);

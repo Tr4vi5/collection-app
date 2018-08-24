@@ -19,6 +19,7 @@
             <th>Genre</th>
             <th>Image Path</th>
             <th>Release Date</th>
+            <th>Inputs</th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +29,7 @@
             <td>{{movie.genre}}</td>
             <td>{{movie.image_path}}</td>
             <td>{{movie.release_date | date}}</td>
+            <td><button ng-click="mc.reMovie(movie)">Remove</button></td>
         </tr>
     </tbody>
 </table>
