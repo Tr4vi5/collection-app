@@ -18,7 +18,7 @@ myApp.controller('MoviesController',['$http', function($http){
     self.getGenres = function(){
         $http({
             method: 'GET',
-            url: '/movie-genres'
+            url: '/movie-genres/formgenres'
         }).then(function(response){
             console.log('Back from server with:', response.data);
             self.genres = response.data;
@@ -46,7 +46,6 @@ myApp.controller('MoviesController',['$http', function($http){
 
     self.reMovie = function(movie){
         console.log('in reMovie', movie.id);
-        let success;
         $http({
             method: 'DELETE',
             url: '/movies/delete/' + movie.id
