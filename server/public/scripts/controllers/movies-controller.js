@@ -7,7 +7,6 @@ myApp.controller('MoviesController',['$http', function($http){
             method: 'GET',
             url: '/movies'
         }).then(function(response){
-            console.log('Back from server with:', response.data);
             self.allMovies = response.data; 
         }).catch(function(error){
             console.log('Error GETting all movies from server:', error);
@@ -20,7 +19,6 @@ myApp.controller('MoviesController',['$http', function($http){
             method: 'GET',
             url: '/movie-genres/formgenres'
         }).then(function(response){
-            console.log('Back from server with:', response.data);
             self.genres = response.data;
         }).catch(function(error){
             console.log('Error in movies-controller genre GET request:', error);

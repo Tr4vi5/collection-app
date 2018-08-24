@@ -1,4 +1,4 @@
-<h1>Genres</h1>
+<h1>Movie Genres</h1>
 <form ng-submit="mgc.addGenre(mgc.genreIn)">
     <input type="text" placeholder="Genre" ng-model="mgc.genreIn.genre">
     <input type="submit" value="Add Genre">
@@ -15,7 +15,7 @@
         <tr ng-repeat="genre in mgc.allGenres">
             <td>{{genre.genre}}</td>
             <td>{{genre.count}}</td>
-            <td><button ng-click="mgc.removeGenre(genre)">Remove</button></td>
+            <td><button ng-click="mgc.removeMovieGenre(genre)">Remove</button></td>
         </tr>
     </tbody>
 </table>

@@ -34,7 +34,13 @@ router.post('/', (req,res)=>{
 });// end /movie-genres POST
 router.delete('/delete/:id', (req,res)=>{
     console.log('/movie-genres DELETE', req.params.id);
-    
-});
+    const queryText = `DELETE FROM "movie_genres" WHERE "id" = $1`;
+    pool.query(queryText, [req.params.id]).then(()=>{
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('Error in /movie-genres/delete/:id', error);
+        res.sendStatus(500);
+    });
+});// end /movie-genres/delete/:id DELETE
 //export
 module.exports = router;

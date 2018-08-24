@@ -31,8 +31,8 @@ router.post('/', (req, res) => {
 router.delete('/delete/:id', (req,res)=>{
     console.log('in DELETE', req.params.id);
     const queryText = `DELETE FROM "movies" WHERE "id" = $1;`;
-    pool.query(queryText, [req.params.id]).then((result)=>{
-        res.sendStatus(201);
+    pool.query(queryText, [req.params.id]).then(()=>{
+        res.sendStatus(200);
     }).catch((error)=>{
         console.log('Error in movies-router DELETE', error);
         res.sendStatus(500);

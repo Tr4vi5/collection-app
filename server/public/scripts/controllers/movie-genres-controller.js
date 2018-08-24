@@ -7,7 +7,6 @@ myApp.controller('MovieGenresController',['$http', function($http){
             method: 'GET',
             url: '/movie-genres'
         }).then(function(response){
-            console.log('Back from server with:', response.data);
             self.allGenres = response.data;
         }).catch(function(error){
             console.log('Error in GETting from server:', error);
@@ -27,9 +26,22 @@ myApp.controller('MovieGenresController',['$http', function($http){
             alert('Sorry, could not add genre');
         });
     };// end addGenre function
-    self.removeGenre = function(genre){
+    self.removeMovieGenre = function(genre){
         console.log('In removeGenre function', genre);
-        
+        if(genre.count > 0){
+            alert('You cannot remove a genre while there are movies of that genre in your collection')
+        }else{
+            $http({
+                method: 'DELETE',
+                url: '/movie-genres/delete/' + genre.id
+            }).then(function (response) {
+                console.log('Success in removeMovieGenre', response.data);
+                self.getAllGenres();
+            }).catch(function (error) {
+                console.log('Error in removeMovieGenre', error);
+                alert(`Could not remove ${genre.genre} genre`)
+            });
+        };
     };// end removeGenre function
     self.getAllGenres();
 }]);
