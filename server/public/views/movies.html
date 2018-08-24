@@ -6,6 +6,7 @@
         <option value="" disabled selected>Choose Genre</option>
         <option ng-repeat="genre in mc.genres" value="{{genre.id}}">{{genre.genre}}</option>
     </select>
+    <input type="text" placeholder="Image" ng-model="mc.movieIn.imageIn" required>
     <label for="releaseDate">Release Date:</label>
     <input id="releaseDate" type="date" ng-model="mc.movieIn.dateIn" required>
     <input type="submit" value="Add Movie">
@@ -16,6 +17,7 @@
             <th>Title</th>
             <th>Description</th>
             <th>Genre</th>
+            <th>Image Path</th>
             <th>Release Date</th>
         </tr>
     </thead>
@@ -24,7 +26,8 @@
             <td>{{movie.title}}</td>
             <td>{{movie.description}}</td>
             <td>{{movie.genre}}</td>
-            <td>{{movie.release_date}}</td>
+            <td>{{movie.image_path}}</td>
+            <td>{{movie.release_date | date}}</td>
         </tr>
     </tbody>
 </table>
