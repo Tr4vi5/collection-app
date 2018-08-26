@@ -1,16 +1,32 @@
 <h1>Movies</h1>
-<form ng-submit="mc.addMovie(mc.movieIn)">
-    <input type="text" placeholder="Title" ng-model="mc.movieIn.titleIn" required>
-    <input type="text" placeholder="Description" ng-model="mc.movieIn.descriptionIn" required>
-    <select ng-model="mc.movieIn.movieGenreIn" required>
-        <option value="" disabled selected>Choose Genre</option>
-        <option ng-repeat="genre in mc.genres" value="{{genre.id}}">{{genre.genre}}</option>
-    </select>
-    <input type="text" placeholder="Image" ng-model="mc.movieIn.imageIn" required>
-    <label for="releaseDate">Release Date:</label>
-    <input id="releaseDate" type="date" ng-model="mc.movieIn.dateIn" required>
-    <input type="submit" value="Add Movie">
-</form>
+<div id="movieInForm">
+    <form ng-submit="mc.addMovie(mc.movieIn)">
+        <input type="text" placeholder="Title" ng-model="mc.movieIn.titleIn" required>
+        <input type="text" placeholder="Description" ng-model="mc.movieIn.descriptionIn" id="descriptionBox" required>
+        <select ng-model="mc.movieIn.ratingIn" required>
+            <option value="" disabled selected>Choose Rating</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+            <option value="NC-17">NC-17</option>
+            <option value="Unrated">Unrated</option>
+        </select>
+        <input type="text" placeholder="Director" ng-model="mc.movieIn.directorIn" required>
+        <input type="text" placeholder="Writer(s)" ng-model="mc.movieIn.writersIn" required>
+        <input type="text" placeholder="Starring" ng-model="mc.movieIn.starringIn" required>
+        <select ng-model="mc.movieIn.movieGenreIn" required>
+            <option value="" disabled selected>Choose Genre</option>
+            <option ng-repeat="genre in mc.genres" value="{{genre.id}}">{{genre.genre}}</option>
+        </select>
+        <input type="text" placeholder="Image URL" ng-model="mc.movieIn.imageIn" required>
+        <input type="text" placeholder="Runtime" ng-model="mc.movieIn.runtimeIn" required>
+        <input type="text" placeholder="Budget" ng-model="mc.movieIn.budgetIn" required>
+        <label for="releaseDate">Release Date:</label>
+        <input id="releaseDate" type="date" ng-model="mc.movieIn.dateIn" required>
+        <input type="submit" value="Add Movie">
+    </form>
+</div>
 <table style="border: 1px solid black">
     <thead>
         <tr style="border: 1px solid black">
@@ -34,26 +50,35 @@
     </tbody>
 </table>
 
-<md-card ng-repeat="movie in mc.allMovies" flex="20" layout="column">
-    <img ng-src="{{movie.image_path}}" class="md-card-image" alt="Washed Out">
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">{{movie.title}}</span>
-        </md-card-title-text>
-    </md-card-title>
-    <md-card-actions layout="row" layout-align="start center">
-        <md-card-icon-actions>
-            <md-button class="md-icon-button" aria-label="Favorite">
-                <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Share">
-                <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
-            </md-button>
-        </md-card-icon-actions>
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
-    </md-card-actions>
-    <md-card-content>
-        <p>{{movie.description}}</p>
-    </md-card-content>
-</md-card>
+<!-- <md-content class="md-padding" layout-xs="column" layout="row">
+    <div layout="column" flex="40">
+        <md-card ng-repeat="movie in mc.allMovies" layout="column">
+            <img ng-src="{{movie.image_path}}" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{movie.title}} ({{movie.release_date | date: "yyyy"}})</span>
+                    <span class="md-subhead">Rating: {{movie.rating}} | Runtime: {{movie.runtime}} | Release date: {{movie.release_date | date}}</span>
+                    <span class="md-subhead">Budget: {{movie.budget | currency: $ :0}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>
+                    {{movie.description}}
+                </p>
+                <p>
+                    Director: {{movie.director}}
+                </p>
+                <p>
+                    Written by: {{movie.writers}}
+                </p>
+                <p>
+                    Starring: {{movie.starring}}
+                </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button>Action 1</md-button>
+                <md-button>Action 2</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content> -->
