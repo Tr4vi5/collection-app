@@ -1,4 +1,5 @@
-<button ng-click="mc.showForm()" style="width: 100%;">Show Add Movie Form</button>
+<button ng-click="mc.showForm()" style="width: 100%;" ng-hide="mc.formShow">Show Add Movie Form</button>
+<button ng-click="mc.showForm()" style="width: 100%;" ng-show="mc.formShow">Hide Add Movie Form</button>
 
 <div id="movieForm" ng-show="mc.formShow">
     <form ng-submit="mc.addMovie(mc.movieIn)">
