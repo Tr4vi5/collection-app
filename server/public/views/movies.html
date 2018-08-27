@@ -1,5 +1,8 @@
-<h1>Movies</h1>
-<div id="movieInForm">
+<div>
+    <h1>Movies</h1>
+    <button ng-click="mc.showForm()">Add Movie</button>
+</div>
+<div id="movieForm" ng-show="mc.formShow">
     <form ng-submit="mc.addMovie(mc.movieIn)">
         <input type="text" placeholder="Title" ng-model="mc.movieIn.titleIn" required>
         <input type="text" placeholder="Description" ng-model="mc.movieIn.descriptionIn" id="descriptionBox" required>
@@ -20,65 +23,44 @@
             <option ng-repeat="genre in mc.genres" value="{{genre.id}}">{{genre.genre}}</option>
         </select>
         <input type="text" placeholder="Image URL" ng-model="mc.movieIn.imageIn" required>
-        <input type="text" placeholder="Runtime" ng-model="mc.movieIn.runtimeIn" required>
-        <input type="text" placeholder="Budget" ng-model="mc.movieIn.budgetIn" required>
+        <input type="text" placeholder="Runtime (example: 120)" ng-model="mc.movieIn.runtimeIn" required>
+        <input type="text" placeholder="Budget (example: 4000000)" ng-model="mc.movieIn.budgetIn" required>
         <label for="releaseDate">Release Date:</label>
         <input id="releaseDate" type="date" ng-model="mc.movieIn.dateIn" required>
         <input type="submit" value="Add Movie">
     </form>
 </div>
-<table style="border: 1px solid black">
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr style="border: 1px solid black">
-            <th>Title</th>
-            <th>Description</th>
+            <th>Cover</th>
+            <th class="forceWidth">Title</th>
+            <th class="forceWidth">Description</th>
+            <th>Rating</th>
+            <th>Director</th>
+            <th>Writer(s)</th>
+            <th>Starring</th>
             <th>Genre</th>
-            <th>Image Path</th>
+            <th>Runtime</th>
+            <th>Budget</th>
             <th>Release Date</th>
             <th>Inputs</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="movie in mc.allMovies">
-            <td>{{movie.title}}</td>
-            <td>{{movie.description}}</td>
-            <td>{{movie.genre}}</td>
-            <td>{{movie.image_path}}</td>
-            <td>{{movie.release_date | date}}</td>
-            <td><button ng-click="mc.reMovie(movie)">Remove</button></td>
+            <td><img ng-src="{{movie.image_path}}" height="200" width="150"></td>
+            <td class="forceWidth tableVertAlign">{{movie.title}}</td>
+            <td class="forceWidth tableVertAlign">{{movie.description}}</td>
+            <td class="tableVertAlign">{{movie.rating}}</td>
+            <td class="tableVertAlign">{{movie.director}}</td>
+            <td class="tableVertAlign">{{movie.writers}}</td>
+            <td class="tableVertAlign">{{movie.starring}}</td>
+            <td class="tableVertAlign">{{movie.genre}}</td>
+            <td class="tableVertAlign">{{movie.runtime}}</td>
+            <td class="tableVertAlign">{{movie.budget | currency: $: 0}}</td>
+            <td class="tableVertAlign">{{movie.release_date | date}}</td>
+            <td class="tableVertAlign"><button ng-click="mc.reMovie(movie)">Remove</button></td>
         </tr>
     </tbody>
 </table>
-
-<!-- <md-content class="md-padding" layout-xs="column" layout="row">
-    <div layout="column" flex="40">
-        <md-card ng-repeat="movie in mc.allMovies" layout="column">
-            <img ng-src="{{movie.image_path}}" class="md-card-image" alt="Washed Out">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{movie.title}} ({{movie.release_date | date: "yyyy"}})</span>
-                    <span class="md-subhead">Rating: {{movie.rating}} | Runtime: {{movie.runtime}} | Release date: {{movie.release_date | date}}</span>
-                    <span class="md-subhead">Budget: {{movie.budget | currency: $ :0}}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <p>
-                    {{movie.description}}
-                </p>
-                <p>
-                    Director: {{movie.director}}
-                </p>
-                <p>
-                    Written by: {{movie.writers}}
-                </p>
-                <p>
-                    Starring: {{movie.starring}}
-                </p>
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>
-            </md-card-actions>
-        </md-card>
-    </div>
-</md-content> -->

@@ -42,7 +42,7 @@ INSERT INTO "movie_genres" ("genre") VALUES
 -- Add a movie
 INSERT INTO "movies" ("title", "description", "rating", "director", "writers", "starring", "movie_genres_id", "image_path", "runtime", "budget", "release_date") VALUES ('Arrival','A linguist is recruited by the military to communicate with alien lifeforms after twelve mysterious spacecrafts land around the world.','PG-13','Denis Villeneuve','Eric Heisserer, Ted Chiang','Amy Adams, Jeremy Renner, Forest Whitaker','13','http://www.impawards.com/2016/posters/arrival.jpg','116','47000000','2016-11-11');
 -- Get all movies
-SELECT "movies"."id" as "id", "title", "description", "rating", "director", "writers", "starring", "genre", "image_path", "runtime", "budget", "release_date" FROM "movies" JOIN "movie_genres" ON "movies"."movie_genres_id" = "movie_genres"."id";
+SELECT "movies"."id" as "id", "title", "description", "rating", "director", "writers", "starring", "genre", "image_path", "runtime", "budget", "release_date" FROM "movies" JOIN "movie_genres" ON "movies"."movie_genres_id" = "movie_genres"."id" ORDER BY "title";
 -- Remove a movie
 DELETE FROM "movies" WHERE "id" = $1;
 -- Get all genres & movie count

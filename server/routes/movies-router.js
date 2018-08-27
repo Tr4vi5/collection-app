@@ -4,7 +4,7 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 //routes
 router.get('/', (req,res)=>{
-    const queryText = `SELECT "movies"."id" as "id", "title", "description", "rating", "director", "writers", "starring", "genre", "image_path", "runtime", "budget", "release_date" FROM "movies" JOIN "movie_genres" ON "movies"."movie_genres_id" = "movie_genres"."id";`;
+    const queryText = `SELECT "movies"."id" as "id", "title", "description", "rating", "director", "writers", "starring", "genre", "image_path", "runtime", "budget", "release_date" FROM "movies" JOIN "movie_genres" ON "movies"."movie_genres_id" = "movie_genres"."id" ORDER BY "title";`;
     pool.query(queryText).then((results)=>{
         console.log(results);
         res.send(results.rows);

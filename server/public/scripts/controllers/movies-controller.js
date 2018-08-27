@@ -1,6 +1,7 @@
 myApp.controller('MoviesController',['$http', function($http){
     console.log('In Movies Controller');
     const self = this;
+    self.formShow = false;
 
     self.getAllMovies = function(){
         $http({
@@ -56,6 +57,10 @@ myApp.controller('MoviesController',['$http', function($http){
             alert('Problem removing ', movie.title);
         });
     };// end reMovie function
+
+    self.showForm = function(){
+        self.formShow = !self.formShow;
+    }// end showForm function
 
     self.getGenres();
     self.getAllMovies();
