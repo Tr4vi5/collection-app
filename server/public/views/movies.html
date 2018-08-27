@@ -68,17 +68,18 @@
     <div flex-xs flex-gt-xs="25" layout="column" ng-repeat="movie in mc.allMovies">
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
             <md-card-title>
-                <md-card-title-text>
+                <md-card-title-text height="auto">
                     <span class="md-headline">{{movie.title}} ({{movie.release_date | date: "yyyy"}})</span>
                     <span class="md-subhead">Rated {{movie.rating}} | {{movie.runtime}} minutes | {{movie.budget | currency: $: 0}}</span>
+                    <p>{{movie.description}}</p>
+                    <span class="md-subhead">Director(s): {{movie.director}}</span>
+                    <span class="md-subhead">Writer(s): {{movie.writers}}</span>
+                    <span class="md-subhead">Starring: {{movie.starring}}</span>
                 </md-card-title-text>
                 <md-card-title-media>
                     <div class="md-media-lg card-media" style="margin: 1px;"><img ng-src="{{movie.image_path}}" style="max-width: 100%; height: auto;"></div>
                 </md-card-title-media>
             </md-card-title>
-            <md-card-content>
-                <p style="width: 50%;">{{movie.description}}</p>
-            </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
                 <md-button class="md-raised md-warn" ng-click="mc.reMovie(movie)">Remove</md-button>
             </md-card-actions>
