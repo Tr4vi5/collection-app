@@ -18,7 +18,6 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
-
 #movieForm input[type=submit] {
     width: 100%;
     background-color: #4CAF50;
@@ -29,8 +28,9 @@
     border-radius: 4px;
     cursor: pointer;
 }
-
 #movieForm input[type=submit]:hover {
     background-color: #45a049;
 }
-
+#homeView{
+    text-align: center;
+}

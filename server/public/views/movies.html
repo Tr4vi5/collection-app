@@ -1,7 +1,5 @@
-<div>
-    <h1>Movies</h1>
-    <button ng-click="mc.showForm()">Add Movie</button>
-</div>
+<button ng-click="mc.showForm()" style="width: 100%;">Show Add Movie Form</button>
+
 <div id="movieForm" ng-show="mc.formShow">
     <form ng-submit="mc.addMovie(mc.movieIn)">
         <input type="text" placeholder="Title" ng-model="mc.movieIn.titleIn" required>
@@ -32,7 +30,7 @@
 </div>
 <table class="table table-striped">
     <thead class="thead-dark">
-        <tr style="border: 1px solid black">
+        <tr>
             <th>Cover</th>
             <th class="forceWidth">Title</th>
             <th class="forceWidth">Description</th>
