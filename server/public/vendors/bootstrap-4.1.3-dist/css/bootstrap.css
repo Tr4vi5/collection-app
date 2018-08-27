@@ -3884,6 +3884,7 @@ input[type="button"].btn-block {
 
 .nav-link:hover, .nav-link:focus {
   text-decoration: none;
+  border-bottom: 3px solid #212529;
 }
 
 .nav-link.disabled {
@@ -4880,8 +4881,9 @@ input[type="button"].btn-block {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 0;
-  background-color: #e9ecef;
+  background-color: #212529;
   border-radius: 0;
+  color: white;
 }
 
 @media (min-width: 576px) {

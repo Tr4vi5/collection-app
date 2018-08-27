@@ -5,6 +5,7 @@ A web application built to manage a movie collection.
 - [x]Express
 - [x]Angular.js
 - [x]PostgreSQL
+- [x]Trello
 ## Features
 - [x]Ability to add and remove movies in a collection that is stored in an SQL database
 - [x]Display all the movies that are in your collection
