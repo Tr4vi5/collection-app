@@ -2,6 +2,8 @@ myApp.controller('MoviesController',['$http', function($http){
     console.log('In Movies Controller');
     const self = this;
     self.formShow = false;
+    self.orderTrue = false;
+    self.orderVariable = 'title';
 
     self.getAllMovies = function(){
         $http({
@@ -60,7 +62,14 @@ myApp.controller('MoviesController',['$http', function($http){
 
     self.showForm = function(){
         self.formShow = !self.formShow;
-    }// end showForm function
+    };// end showForm function
+
+    self.orderBy = function(property){
+        console.log('In orderBy', property);
+        
+        self.orderVariable = property;
+        self.orderTrue = !self.orderTrue;
+    };
 
     self.getGenres();
     self.getAllMovies();

@@ -33,21 +33,21 @@
     <thead class="thead-dark">
         <tr>
             <th>Cover</th>
-            <th class="forceWidth">Title</th>
+            <th class="forceWidth" ng-click="mc.orderBy('title')">Title</th>
             <th class="forceWidth">Description</th>
-            <th>Rating</th>
-            <th>Director</th>
-            <th>Writer(s)</th>
-            <th>Starring</th>
-            <th>Genre</th>
-            <th>Runtime</th>
-            <th>Budget</th>
-            <th>Release Date</th>
+            <th ng-click="mc.orderBy('rating')">Rating</th>
+            <th ng-click="mc.orderBy('director')">Director</th>
+            <th ng-click="mc.orderBy('writers')">Writer(s)</th>
+            <th ng-click="mc.orderBy('starring')">Starring</th>
+            <th ng-click="mc.orderBy('genre')">Genre</th>
+            <th ng-click="mc.orderBy('runtime')">Runtime</th>
+            <th ng-click="mc.orderBy('budget')">Budget</th>
+            <th ng-click="mc.orderBy('release_date')">Release Date</th>
             <th>Inputs</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="movie in mc.allMovies">
+        <tr ng-repeat="movie in mc.allMovies | orderBy : mc.orderVariable : mc.orderTrue">
             <td><img ng-src="{{movie.image_path}}" height="200" width="150"></td>
             <td class="forceWidth tableVertAlign">{{movie.title}}</td>
             <td class="forceWidth tableVertAlign">{{movie.description}}</td>
@@ -58,7 +58,7 @@
             <td class="tableVertAlign">{{movie.genre}}</td>
             <td class="tableVertAlign">{{movie.runtime}} minutes</td>
             <td class="tableVertAlign">{{movie.budget | currency: $: 0}}</td>
-            <td class="tableVertAlign">{{movie.release_date | date}}</td>
+            <td class="tableVertAlign" >{{movie.release_date | date}}</td>
             <td class="tableVertAlign"><button ng-click="mc.reMovie(movie)">Remove</button></td>
         </tr>
     </tbody>
